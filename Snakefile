@@ -1,4 +1,4 @@
-SAMPLES = ['A', 'B']
+SAMPLES = ['A', 'B', 'C']
 print(expand("sorted_reads/{sample}.bam",
                    sample=SAMPLES))
 
@@ -21,7 +21,7 @@ rule samtools_sort:
     output:
         "sorted_reads/{sample}.bam"
     shell:
-        "samtool sort -T sorted_reads/{wildcards.sample} "
+        "samtools sort -T sorted_reads/{wildcards.sample} "
         "-O bam {input} > {output}"
 
 rule samtools_index:
